@@ -76,6 +76,8 @@ Request.prototype = {
 	},
 
 	_responseHandler: function(response, raw, deferred) {
+		if(response !== null && response.code === 'HPE_INVALID_CONSTANT') return;
+
 		if(response == null || response.data) {
 			deferred.resolve(Response(raw));
 		} else {
