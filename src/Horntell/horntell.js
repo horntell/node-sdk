@@ -4,6 +4,7 @@ var resources = {
 	App: require('./App'),
 	Profile: require('./Profile'),
 	Horn: require('./Horn'),
+	Card: require('./Card'),
 	Campaign: require('./Campaign')
 },
 

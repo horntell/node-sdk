@@ -39,6 +39,39 @@ Campaign.prototype = {
 		};
 
 		return this._request.send('POST', '/profiles/campaigns/' + campaignId, data, callback);
+	},
+
+	/**
+	 * Triggers campaign for single channel
+	 *
+	 * @param  string uid
+	 * @param  string campaignId
+	 * @param  function callback
+	 */
+
+	toChannel: function(uid, campaignId, meta, callback) {
+		if(meta === undefined || meta == null) meta = {};
+
+		return this._request.send('POST', '/channels/' + uid + '/campaigns/' + campaignId, {meta: meta}, callback);
+	},
+
+	/**
+	 * Triggers campaign for multiple channels
+	 *
+	 * @param  array channels
+	 * @param  string campaignId
+	 * @param  function callback
+	 */
+
+	toChannels: function(channels, campaignId, meta, callback) {
+		if(meta === undefined || meta == null) meta = {};
+
+		var data = {
+			channel_uids: channels,
+			meta: meta
+		};
+
+		return this._request.send('POST', '/channels/campaigns/' + campaignId, data, callback);
 	}
 }
 
